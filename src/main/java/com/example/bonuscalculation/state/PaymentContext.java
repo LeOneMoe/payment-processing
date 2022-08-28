@@ -29,12 +29,12 @@ public class PaymentContext {
     public void proceedPayment() {
         if (account.getFunds().compareTo(paymentSum) < 0) {
             log.error("Client doesn`t have enough funds");
-            return;
+            throw new RuntimeException("Client doesn`t have enough funds");
         }
 
         if (paymentSum.compareTo(BigDecimal.ZERO) <= 0) {
             log.error("Cannot process zero or negative payment sum");
-            return;
+            throw new RuntimeException("Cannot process zero or negative payment sum");
         }
 
         state = switch (paymentType) {
