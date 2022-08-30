@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+// сервис для получения данных о счете клиента
 @Service
 public class AccountService {
     public BigDecimal getBonus() {

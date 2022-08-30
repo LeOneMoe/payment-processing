@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+// сервис для обработки платежей
 @Service
 public class PaymentService {
     public void pay(String type, BigDecimal amount) {

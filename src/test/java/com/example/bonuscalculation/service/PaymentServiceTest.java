@@ -11,14 +11,17 @@ import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// класс тестов платежей
 @SpringBootTest
 public class PaymentServiceTest {
+
+    // di сервисов
     @Autowired
     PaymentService paymentService;
-
     @Autowired
     AccountService accountService;
 
+    // ниже тесты из ТЗ
     @Test
     void testPayment_1() {
         Account.restartInstance();
@@ -115,6 +118,7 @@ public class PaymentServiceTest {
         );
     }
 
+    // вынес общую логику для тестирования в отделый метод
     void performPaymentTest(String type, BigDecimal paymentSum, BigDecimal expectedFunds, BigDecimal expectedBonus) {
         paymentService.pay(type, paymentSum);
         assertEquals(expectedFunds.setScale(2, RoundingMode.FLOOR), accountService.getFunds(), "Wrong funds balance");
